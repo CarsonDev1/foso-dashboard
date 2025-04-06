@@ -23,7 +23,7 @@ export function StatsCards({ data, isLoading }: StatsCardsProps) {
 	return (
 		<div>
 			<div className='flex items-center justify-between mb-4'>
-				<h2 className='text-lg font-medium'>Top Sản Phẩm Sản Xuất Nhiều Nhất</h2>
+				<h2 className='text-base lg:text-lg font-medium'>Top Sản Phẩm Sản Xuất Nhiều Nhất</h2>
 				<Select defaultValue='quy-nay'>
 					<SelectTrigger className='w-28 h-8 text-xs'>
 						<SelectValue placeholder='Quý này' />

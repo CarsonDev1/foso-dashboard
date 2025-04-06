@@ -49,13 +49,12 @@ export function ProductionChart({ data, isLoading }: ProductionChartProps) {
 
 	const [activeBar, setActiveBar] = useState<string | null>(null);
 
-	// Check if we should display empty state (no data view)
 	const showEmptyState = !data || data.length === 0;
 
 	return (
 		<Card>
 			<CardHeader className='flex flex-row items-center justify-between pb-2'>
-				<CardTitle className='text-base font-medium'>Kế Hoạch Sản Xuất</CardTitle>
+				<CardTitle className='text-base lg:text-lg font-medium'>Kế Hoạch Sản Xuất</CardTitle>
 				<Select defaultValue='quy-nay'>
 					<SelectTrigger className='w-28 h-8 text-xs'>
 						<SelectValue placeholder='Quý này' />
@@ -141,6 +140,7 @@ export function ProductionChart({ data, isLoading }: ProductionChartProps) {
 									interval={0}
 									height={30}
 									tickMargin={10}
+									className='hidden md:block'
 								/>
 								<YAxis
 									axisLine={false}
@@ -156,7 +156,7 @@ export function ProductionChart({ data, isLoading }: ProductionChartProps) {
 									dataKey='planned'
 									fill='#3B82F6'
 									radius={[4, 4, 0, 0]}
-									barSize={24}
+									barSize={14}
 									isAnimationActive={false}
 								/>
 								<Bar
@@ -164,7 +164,7 @@ export function ProductionChart({ data, isLoading }: ProductionChartProps) {
 									dataKey='actual'
 									fill='#10B981'
 									radius={[4, 4, 0, 0]}
-									barSize={24}
+									barSize={14}
 									isAnimationActive={false}
 								></Bar>
 							</BarChart>

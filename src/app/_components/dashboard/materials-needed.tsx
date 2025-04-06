@@ -25,7 +25,7 @@ export function MaterialsNeeded({ data, isLoading, className }: MaterialsNeededP
 	return (
 		<Card className={cn(className)}>
 			<CardHeader className='flex flex-row items-center justify-between pb-2 mb-4'>
-				<CardTitle className='text-base font-medium'>Nguyên Vật Liệu Cần Mua</CardTitle>
+				<CardTitle className='text-base lg:text-lg font-medium'>Nguyên Vật Liệu Cần Mua</CardTitle>
 				<Select defaultValue='tuan-nay'>
 					<SelectTrigger className='w-28 h-8 text-xs'>
 						<SelectValue placeholder='Tuần này' />

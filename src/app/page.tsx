@@ -9,7 +9,6 @@ import { TopCustomersChart } from '@/app/_components/dashboard/top-customers-cha
 import { ProductionStatus } from '@/app/_components/dashboard/production-status';
 import { ProductionProgress } from '@/app/_components/dashboard/production-progress';
 import { MaterialsNeeded } from '@/app/_components/dashboard/materials-needed';
-import { StatusSummary } from '@/app/_components/dashboard/status-summary';
 import { Maximize2, Minimize2 } from 'lucide-react';
 
 export default function DashboardPage() {
@@ -66,8 +65,7 @@ export default function DashboardPage() {
 
 	return (
 		<div className={`flex min-h-screen flex-col transition-all duration-300 ${isFullScreen ? 'bg-white' : ''}`}>
-			<div className='p-3 sm:p-4 flex justify-between items-center flex-wrap gap-2'>
-				<h1 className='text-lg font-medium text-gray-900 sm:hidden'>Dashboard</h1>
+			<div className='p-3 sm:p-4 flex justify-end items-center flex-wrap gap-2'>
 				<div className='flex items-center gap-2 ml-auto'>
 					<Button variant='outline' onClick={() => setHasData(!hasData)} className='text-xs h-8'>
 						{hasData ? 'Hiển thị trạng thái không có dữ liệu' : 'Hiển thị trạng thái có dữ liệu'}

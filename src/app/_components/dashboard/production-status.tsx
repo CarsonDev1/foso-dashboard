@@ -119,15 +119,19 @@ export function ProductionStatus({ data, isLoading, className }: ProductionStatu
 	};
 
 	useEffect(() => {
-		if (isLoading || !data) return;
+		if (isLoading) return;
 
-		const periodData = mockDataByPeriod[selectedPeriod];
-		setDisplayData({
-			total: periodData.total,
-			completed: periodData.completed,
-			inProgress: periodData.inProgress,
-			planned: periodData.planned,
-		});
+		if (data) {
+			const periodData = mockDataByPeriod[selectedPeriod];
+			setDisplayData({
+				total: periodData.total,
+				completed: periodData.completed,
+				inProgress: periodData.inProgress,
+				planned: periodData.planned,
+			});
+		} else {
+			setDisplayData(undefined);
+		}
 	}, [selectedPeriod, data, isLoading]);
 
 	useEffect(() => {
@@ -188,10 +192,33 @@ export function ProductionStatus({ data, isLoading, className }: ProductionStatu
 		setSelectedPeriod(value as PeriodOption);
 	};
 
+	const EmptyState = () => (
+		<div className='flex flex-col items-center justify-center h-full min-h-[250px] text-gray-400'>
+			<div className='relative w-32 h-32 rounded-full border-8 border-gray-200 mb-4 flex items-center justify-center'>
+				<span className='text-4xl font-bold text-gray-300'>0</span>
+			</div>
+			<p className='text-gray-500 mb-6'>Lệnh sản xuất</p>
+			<div className='flex justify-between w-full mt-2'>
+				<div className='text-center'>
+					<p className='text-2xl font-bold text-gray-300'>0</p>
+					<p className='text-sm text-gray-400'>Chưa hoàn thành</p>
+				</div>
+				<div className='text-center'>
+					<p className='text-2xl font-bold text-gray-300'>0</p>
+					<p className='text-sm text-gray-400'>Đang sản xuất</p>
+				</div>
+				<div className='text-center'>
+					<p className='text-2xl font-bold text-gray-300'>0</p>
+					<p className='text-sm text-gray-400'>Hoàn thành</p>
+				</div>
+			</div>
+		</div>
+	);
+
 	return (
 		<Card className={cn(className, 'h-full flex flex-col')}>
 			<CardHeader className='flex flex-row items-center justify-between pb-2 flex-shrink-0'>
-				<CardTitle className='text-base font-medium'>Tình Hình Sản Xuất</CardTitle>
+				<CardTitle className='text-base lg:text-lg font-medium'>Tình Hình Sản Xuất</CardTitle>
 				<Select defaultValue='hom-nay' onValueChange={handlePeriodChange}>
 					<SelectTrigger className='w-28 h-8 text-xs'>
 						<SelectValue placeholder='Hôm nay' />
@@ -208,28 +235,7 @@ export function ProductionStatus({ data, isLoading, className }: ProductionStatu
 				{isLoading ? (
 					<Skeleton className='h-full w-full min-h-[250px]' />
 				) : !displayData ? (
-					<div className='flex flex-col items-center justify-center h-full min-h-[250px] text-gray-400'>
-						<div className='relative w-32 h-32 rounded-full border-8 border-gray-200 mb-4'>
-							<div className='absolute inset-0 flex items-center justify-center'>
-								<span className='text-2xl font-bold text-gray-300'>0</span>
-							</div>
-						</div>
-						<p>Lệnh sản xuất</p>
-						<div className='flex justify-between w-full mt-6'>
-							<div className='text-center'>
-								<p className='text-xl font-bold text-gray-300'>0</p>
-								<p className='text-sm text-gray-400'>Chưa hoàn thành</p>
-							</div>
-							<div className='text-center'>
-								<p className='text-xl font-bold text-gray-300'>0</p>
-								<p className='text-sm text-gray-400'>Đang sản xuất</p>
-							</div>
-							<div className='text-center'>
-								<p className='text-xl font-bold text-gray-300'>0</p>
-								<p className='text-sm text-gray-400'>Hoàn thành</p>
-							</div>
-						</div>
-					</div>
+					<EmptyState />
 				) : (
 					<div className='flex flex-col h-full'>
 						<div className='relative flex-grow flex justify-center items-center h-[200px] sm:h-[220px] md:h-[240px] lg:h-[240px] xl:h-[260px]'>

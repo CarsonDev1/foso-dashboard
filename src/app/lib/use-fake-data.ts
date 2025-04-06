@@ -119,7 +119,6 @@ export function useFakeData(hasData: boolean = true) {
           productionPlan: [
             { category: 'Hội hàng', planned: 90, actual: 40 },
             { category: 'Áo sơ mi', planned: 80, actual: 65 },
-            { category: 'Áo khoác', planned: 86, actual: 50, highlight: true }, // Added highlight property
             { category: 'Áo thun polo', planned: 70, actual: 25 },
             { category: 'Quần baggy', planned: 75, actual: 45 },
             { category: 'Quần jogger', planned: 82, actual: 60 }

@@ -23,9 +23,9 @@ export function ProductionProgress({ data, isLoading, className }: ProductionPro
 	return (
 		<Card className={cn(className)}>
 			<CardHeader className='flex flex-row items-center justify-between pb-2 mb-4'>
-				<CardTitle className='text-base font-medium'>Tiến Độ Sản Xuất Theo Nhóm</CardTitle>
+				<CardTitle className='text-base lg:text-lg font-medium'>Tiến Độ Sản Xuất Theo Nhóm</CardTitle>
 				<Select defaultValue='hoan-thanh'>
-					<SelectTrigger className='w-28 h-8 text-xs'>
+					<SelectTrigger className='w-28 h-8 text-xs' showDateIcon={false}>
 						<SelectValue placeholder='Hoàn thành' />
 					</SelectTrigger>
 					<SelectContent>

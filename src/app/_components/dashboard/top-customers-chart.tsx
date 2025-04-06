@@ -31,7 +31,6 @@ const CustomTooltip = ({ active, payload, label }: TooltipProps<number, string>)
 };
 
 export function TopCustomersChart({ data, isLoading }: TopCustomersChartProps) {
-	// Sample data to match the design
 	const sampleData = [
 		{ name: 'Công ty Dệt may Happy Polla', value: 3100 },
 		{ name: 'Công ty May mặc Saigon trendy', value: 3000 },
@@ -44,7 +43,6 @@ export function TopCustomersChart({ data, isLoading }: TopCustomersChartProps) {
 
 	const renderCustomizedLabel = (props: any) => {
 		const { x, y, width, height, value } = props;
-		// Only show label for specific value (2,900 in the example image)
 		if (value === 2900) {
 			return (
 				<g>
@@ -67,7 +65,9 @@ export function TopCustomersChart({ data, isLoading }: TopCustomersChartProps) {
 	return (
 		<Card>
 			<CardHeader className='flex flex-row items-center justify-between pb-2'>
-				<CardTitle className='text-base font-medium'>Top 5 Khách Hàng Có Sản Lượng Nhiều Nhất</CardTitle>
+				<CardTitle className='text-base lg:text-lg font-medium'>
+					Top 5 Khách Hàng Có Sản Lượng Nhiều Nhất
+				</CardTitle>
 				<Select defaultValue='nam-nay'>
 					<SelectTrigger className='w-28 h-8 text-xs'>
 						<SelectValue placeholder='Năm nay' />
@@ -109,6 +109,7 @@ export function TopCustomersChart({ data, isLoading }: TopCustomersChartProps) {
 									tickCount={5}
 									ticks={[0, 800, 1600, 2400, 3200]}
 									tickFormatter={(value) => `${value}`}
+									className='hidden md:block'
 								/>
 								<YAxis
 									type='category'

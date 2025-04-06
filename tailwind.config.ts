@@ -9,6 +9,9 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			screens: {
+				'2xl': '1440px',
+			},
 			colors: {
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
